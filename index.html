@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f4d3a">
+<meta name="color-scheme" content="light dark">
+<script>document.documentElement.className+=" js"</script>
+<title>峇里島 10/7–10/11 旅行手冊</title>
+<style>
+html{color-scheme:light}
+:root{
+  --paddy:#1f4d3a; --paddy-2:#2f6b50; --leaf:#e7efe4; --sheet:#fbfdf9;
+  --ink:#1c2620; --muted:#5b6b61; --line:#cfdccc;
+  --marigold:#e0a018; --hibiscus:#b8235a; --sky:#1d6e8f;
+  --warn-bg:#fff4dc; --alert-bg:#fde8ef;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  html:not([data-theme="light"]){color-scheme:dark}
+  :root:not([data-theme="light"]){
+    --paddy:#7cc3a0; --paddy-2:#5fa885; --leaf:#16201b; --sheet:#1d2922;
+    --ink:#e6eee8; --muted:#9fb0a5; --line:#2e3d34;
+    --marigold:#f0b93a; --hibiscus:#ef6f9b; --sky:#6cc0e0;
+    --warn-bg:#3a3018; --alert-bg:#3d1c28;
+  }
+}
+html[data-theme="dark"]{color-scheme:dark}
+:root[data-theme="dark"]{
+  --paddy:#7cc3a0; --paddy-2:#5fa885; --leaf:#16201b; --sheet:#1d2922;
+  --ink:#e6eee8; --muted:#9fb0a5; --line:#2e3d34;
+  --marigold:#f0b93a; --hibiscus:#ef6f9b; --sky:#6cc0e0;
+  --warn-bg:#3a3018; --alert-bg:#3d1c28;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--leaf);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px 96px}
+
+/* header: woven endek band */
+header{background:var(--paddy);color:#fff;margin:0 -16px;padding:22px 20px 18px;position:relative}
+:root[data-theme="dark"] header{color:#0f1a14}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) header{color:#0f1a14}}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;
+  background:repeating-linear-gradient(90deg,var(--marigold) 0 14px,var(--hibiscus) 14px 20px,var(--paddy-2) 20px 34px,var(--hibiscus) 34px 40px)}
+header h1{font-family:var(--serif);font-weight:700;font-size:2rem;line-height:1.2;margin:0;letter-spacing:.04em}
+header p{margin:6px 0 0;opacity:.9;font-size:.95rem}
+#today{margin:30px 0 8px;background:var(--sheet);border-left:5px solid var(--marigold);border-radius:4px 14px 14px 4px;padding:14px 16px}
+#today strong{font-family:var(--serif);font-size:1.25rem;display:block}
+#today span{color:var(--muted);font-size:.92rem}
+
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--sheet);border-top:1px solid var(--line);
+  display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs .inner{display:flex;max-width:640px;width:100%;overflow-x:auto}
+nav.tabs a{text-decoration:none;text-align:center;flex:1 0 auto;min-width:52px;background:none;border:0;color:var(--muted);font:inherit;font-size:.78rem;padding:8px 6px 9px;cursor:pointer;line-height:1.2}
+nav.tabs a b{display:block;font-size:1.25rem;font-weight:400}
+nav.tabs a[aria-selected="true"]{color:var(--paddy);box-shadow:inset 0 3px 0 var(--paddy)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+
+.js section.panel{display:none}
+.js section.panel.on{display:block}
+h2{font-family:var(--serif);font-size:1.5rem;margin:28px 0 6px;color:var(--paddy)}
+h3{font-size:1.06rem;margin:22px 0 6px}
+p,li{max-width:38em}
+ul{padding-left:1.2em;margin:6px 0}
+li{margin:4px 0}
+.note{color:var(--muted);font-size:.9rem}
+.box{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.warn{background:var(--warn-bg);border-color:transparent;border-left:4px solid var(--marigold)}
+.alert{background:var(--alert-bg);border-color:transparent;border-left:4px solid var(--hibiscus)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;white-space:nowrap}
+td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+a{color:var(--sky)}
+
+/* days timeline */
+.day{position:relative;padding:0 0 4px 30px;margin-top:18px}
+.day::before{content:"";position:absolute;left:9px;top:8px;bottom:-18px;width:2px;background:var(--line)}
+.day:last-child::before{display:none}
+.day .dot{position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:50%;background:var(--sheet);border:3px solid var(--paddy)}
+.day.is-today .dot{background:var(--marigold);border-color:var(--marigold)}
+.day h3{margin:0;font-family:var(--serif);font-size:1.2rem}
+.day h3 small{font-family:var(--sans);font-weight:400;color:var(--muted);font-size:.85rem;margin-left:6px}
+.day .box{margin-top:8px}
+.tag{display:inline-block;font-size:.8rem;padding:1px 8px;border-radius:999px;background:var(--leaf);border:1px solid var(--line);margin:2px 4px 2px 0}
+.tag.pending{border-color:var(--marigold);color:var(--ink)}
+textarea{width:100%;min-height:90px;font:inherit;font-size:.95rem;color:var(--ink);background:var(--leaf);border:1px solid var(--line);border-radius:8px;padding:8px 10px;resize:vertical}
+.saved{font-size:.8rem;color:var(--paddy);min-height:1.2em}
+
+/* checklists */
+.check{list-style:none;padding:0}
+.check li{margin:0;border-bottom:1px solid var(--line)}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:9px 2px;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--paddy);flex:none}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{font-size:.85rem;color:var(--muted)}
+
+/* converter */
+.conv label{display:block;font-size:.85rem;color:var(--muted);margin-top:10px}
+.conv input{width:100%;font:inherit;font-size:1.15rem;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--leaf);color:var(--ink);font-variant-numeric:tabular-nums}
+.conv .rates{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.conv .rates input{font-size:.95rem}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quick button{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--leaf);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer}
+
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.stage{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:118px}
+.stage b{font-size:.95rem;line-height:1.3}
+.stage small{color:var(--muted);font-size:.75rem;line-height:1.3}
+.stage em{font-style:normal;font-size:.8rem;color:var(--paddy);margin-top:auto}
+.stage.done{border-color:var(--paddy);background:var(--leaf)}
+.stage-n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--paddy);color:var(--sheet);font-family:var(--sans);font-size:.85rem;font-weight:700;margin-right:6px;flex:none}
+h2 .stage-n{width:28px;height:28px;font-size:.95rem;vertical-align:3px}
+.sub{font-weight:700;margin:16px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--paddy)}
+#today:empty{display:none}
+.nojs-only{display:none}
+html:not(.js) .nojs-only{display:block}
+html:not(.js) .js-only,html:not(.js) .themebtn,html:not(.js) .progress,html:not(.js) .stage em{display:none}
+html:not(.js) section.panel{margin-top:36px;padding-top:6px;border-top:3px solid var(--paddy)}
+html:not(.js) section.panel::before{content:attr(data-title);display:inline-block;margin-top:10px;background:var(--paddy);color:var(--sheet);font-weight:700;font-size:.9rem;padding:2px 12px;border-radius:999px}
+html:not(.js) nav.tabs a[aria-selected="true"]{box-shadow:none;color:var(--muted)}
+details{background:var(--sheet);border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:0 16px}
+details summary{cursor:pointer;padding:12px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:6px}
+details > *:last-child{margin-bottom:14px}
+.big{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--hibiscus)}
+footer{margin-top:36px;font-size:.82rem;color:var(--muted)}
+.themebtn{position:absolute;right:14px;top:14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:inherit;border-radius:999px;font:inherit;font-size:.8rem;padding:3px 10px;cursor:pointer}
+@media (prefers-reduced-motion:no-preference){ section.panel.on{animation:fade .18s ease-out} @keyframes fade{from{opacity:.4}to{opacity:1}} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <button class="themebtn" id="themeBtn" type="button" aria-label="切換深淺色">自動</button>
+  <h1>峇里島</h1>
+  <p>2026/10/7（三）– 10/11（日）｜兩人同行｜喜鴻 樂遊峇里島５日</p>
+</header>
+
+<div class="box warn nojs-only" style="margin-top:30px"><b>目前是預覽模式</b>：所有分頁由上往下排列，點底部按鈕可跳到該段。勾選清單無法儲存、換算器無法使用；要完整功能，請用 Safari 或 Chrome 開啟。</div>
+<div id="today" role="status"></div>
+
+<!-- ============ 行程 ============ -->
+<section class="panel on" id="p-plan" data-title="🗓 行程">
+  <h2>每日行程</h2>
+  <p class="note">喜鴻【樂遊峇里島５日】迷你小團（團號 DPS05BR261007B）。峇里島與台灣<b>沒有時差</b>。景點順序導遊會依現場調整。</p>
+  <div class="box warn" style="margin-top:8px">
+    <b>沒有台灣領隊隨行</b>：桃園與峇里島機場只有專人協助報到。<b>落地簽、過海關、入出境都要自己辦</b>，出關後才會見到當地華語導遊。
+  </div>
+
+  <div class="day" data-date="2026-10-07">
+    <span class="dot"></span>
+    <h3>Day 1　桃園 → 峇里島<small>10/7 週三</small></h3>
+    <div class="box">
+      <p style="margin:0 0 6px"><b>BR255</b>　09:50 桃園 → 15:15 峇里島（DPS）</p>
+      <ul>
+        <li><b>07:20</b> 桃園第二航廈長榮 <b>20 號團體櫃台</b>集合，找機場服務人員小周（<a href="tel:0937012974">0937-012-974</a>），領 SIM 卡（每人一張）與<b>灰色行李牌</b>。</li>
+        <li>落地後依「入出境」頁的步驟入境：有 e-VOA 走<b>自動通關閘門</b>（不蓋章，改發電子郵件）；現場辦落地簽則走人工櫃台，<b>當場確認護照有蓋入境章</b> → 領行李 → 海關掃 All Indonesia QR Code。</li>
+        <li>出關後與導遊 <b>Erry（女）</b>（<a href="tel:+6282237022518">+62 822-3702-2518</a>）會合，接機獻花。觀光稅旅行社已代收，由導遊處理，憑證當天發給每個人。</li>
+        <li>超市採買 → 金巴蘭海灘看夕陽。</li>
+      </ul>
+      <p style="margin:6px 0 0"><span class="tag">午餐</span>機上輕食　<span class="tag">晚餐</span>金巴蘭海灘海鮮燒烤 BBQ＋椰子一顆</p>
+      <p style="margin:8px 0 0"><span class="tag">住宿 2 晚</span><b>Royal Tulip Springhill Resort Jimbaran</b>（金巴蘭斯普林希爾皇家鬱金香渡假村）<br><a href="tel:+623616205888">+62 361 620 5888</a></p><p class="note" style="margin:4px 0 0">入住時櫃台可能收押金（現金或刷卡預授權），退房沒有額外消費會退還。</p>
+      <div class="box alert" style="margin:10px 0 0"><b>今天要準備的小費／現金</b><ul style="margin:4px 0 0"><li><b>行李（入住）</b> Rp 10,000／房：行李員把行李送到房間時給（通常都會有這項服務）</li></ul></div>
+    </div>
+  </div>
+
+  <div class="day" data-date="2026-10-08">
+    <span class="dot"></span>
+    <h3>Day 2　烏布叢林與梯田<small>10/8 週四</small></h3>
+    <div class="box">
+      <ul>
+        <li><b>叢林三合一</b>：復古吉普車、阿漾河激流泛舟、高空鞦韆。</li>
+        <li>烏布傳統藝術市集（藤包、木雕、蠟染、銀飾，記得殺價）→ 烏布皇宮。</li>
+        <li>德哥拉朗梯田莊園：透明玻璃景觀台、巨型鳥巢拍照。</li>
+      </ul>
+      <p style="margin:6px 0 0"><span class="tag">早餐</span>飯店　<span class="tag">午餐</span>酥脆髒鴨風味餐　<span class="tag">晚餐</span>水上餐廳西爪哇風味餐</p>
+      <div class="box alert" style="margin:10px 0 0">
+        <b>泛舟日</b>：衣服裡先穿泳衣，帶一套換洗衣物、毛巾、塑膠袋；穿可濕的涼鞋。手機放防水袋或交給導遊。心臟病、高血壓、孕婦不可參加。<br>
+      </div>
+      <div class="box alert" style="margin:10px 0 0"><b>今天要準備的小費／現金</b><ul style="margin:4px 0 0"><li><b>床頭</b> Rp 10,000／房（早上出門前放枕頭上；不需打掃可告知櫃台，就不用付）</li><li><b>泛舟船家</b> Rp 10,000–20,000／人</li></ul></div>
+    </div>
+  </div>
+
+  <div class="day" data-date="2026-10-09">
+    <span class="dot"></span>
+    <h3>Day 3　藍夢島＋Lulur Spa<small>10/9 週五</small></h3>
+    <div class="box">
+      <ul>
+        <li><b>08:30 開船</b>前往藍夢島（Nusa Lembongan）天堂海俱樂部：浮潛、香蕉船、滑水道、獨木舟、海底漫步，臨海泳池可游泳做日光浴。</li>
+        <li>藍夢島村莊之旅：惡魔的眼淚、沙灘。</li>
+        <li><b>15:45 返航</b>回峇里島。團進團出，不能脫隊。</li>
+        <li>南洋花香 <b>Lulur Spa 120 分鐘</b>。</li>
+        <li>晚上入住 <b>Villa</b>（連住兩晚）。</li>
+      </ul>
+      <p style="margin:6px 0 0"><span class="tag">早餐</span>飯店　<span class="tag">午餐</span>俱樂部印式套餐或自助餐　<span class="tag">晚餐</span>Wahaha 醬烤豬肋排套餐</p>
+      <div class="box alert" style="margin:10px 0 0">
+        <b>出海日</b>：早起，先吃暈船藥；帶泳衣、防水防曬、毛巾、換洗衣物、防水手機袋。浮潛用具和救生衣有附。各水上活動限玩一次；海象不好不要勉強下水。部分項目不適合 60 歲以上、心臟病、高血壓、孕婦。
+      </div>
+      <div class="box alert" style="margin:10px 0 0"><b>今天要準備的小費／現金</b><ul style="margin:4px 0 0"><li><b>床頭</b> Rp 10,000／房（早上出門前放枕頭上；不需打掃可告知櫃台，就不用付）</li><li><b>行李（Royal Tulip 退房）</b> Rp 10,000／房：<u>有</u>行李員到房間幫忙搬才給；自己拖到大廳就不用給</li><li><b>藍夢島環境清潔費</b> Rp 25,000／人：上島時付</li><li><b>SPA 芳療師</b> Rp 10,000–20,000（或 US$1–2）／人</li><li><b>行李（Villa 入住）</b> Rp 10,000／房：行李送到房間時給</li></ul></div>
+      <p style="margin:8px 0 0"><span class="tag">住宿 2 晚</span><b>The Light Exclusive Villas &amp; Spa</b><br><a href="tel:+623618499580">+62 361 8499 580</a></p>
+    </div>
+  </div>
+
+  <div class="day" data-date="2026-10-10">
+    <span class="dot"></span>
+    <h3>Day 4　Villa 慢活・庫塔<small>10/10 週六</small></h3>
+    <div class="box">
+      <ul>
+        <li>上午自由活動，在 Villa 睡到自然醒、游泳。</li>
+        <li>下午：Kuta Beach Walk 購物商圈 → 3D 咖啡博物館（送麝香貓咖啡一杯）。</li>
+      </ul>
+      <p style="margin:6px 0 0"><span class="tag">早餐</span>Villa　<span class="tag pending">午餐、晚餐自理</span></p>
+      <p class="note" style="margin:6px 0 0">今天兩餐要自己付，可以在 Beach Walk 吃（預算見「錢」頁）。晚上先整理行李。</p>
+      <div class="box alert" style="margin:10px 0 0"><b>今天要準備的小費／現金</b><ul style="margin:4px 0 0"><li><b>床頭</b> Rp 10,000／房（早上出門前放枕頭上；不需打掃可告知櫃台，就不用付）</li></ul></div>
+    </div>
+  </div>
+
+  <div class="day" data-date="2026-10-11">
+    <span class="dot"></span>
+    <h3>Day 5　峇里島 → 桃園<small>10/11 週日</small></h3>
+    <div class="box">
+      <p style="margin:0 0 6px"><b>BR256</b>　16:30 峇里島 → 22:00 桃園</p>
+      <ul>
+        <li>退房：檢查保險箱、充電器、浴室。</li>
+        <li>土產店（胡椒、咖哩、雞湯醬、蝦餅等）→ 中式合菜午餐 → 機場。</li>
+                <li>出境自行辦理。印尼盾在台灣幾乎換不回來，盡量花完。</li>
+        <li>回台入境：生鮮肉品、水果不能帶；免稅菸酒每人一條菸、一瓶酒。</li>
+      </ul>
+      <div class="box alert" style="margin:10px 0 0"><b>今天要準備的小費／現金</b><ul style="margin:4px 0 0"><li><b>床頭</b> Rp 10,000／房（早上出門前放枕頭上；不需打掃可告知櫃台，就不用付）</li><li><b>行李（退房）</b> Rp 10,000／房：<u>有</u>行李員到房間幫忙搬才給；自己拖到大廳就不用給</li><li><b>導遊小費</b> 每人每天 US$10，兩人 5 天共 <b>US$100</b>：下車前交給導遊</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 行前 ============ -->
+<section class="panel" id="p-prep" data-title="🧳 行前">
+  <h2>準備總覽</h2>
+  <p class="note">分三個階段，由上往下做。點卡片可以直接跳到該段。</p>
+  <div class="stages">
+    <a class="stage" href="#s1"><span class="stage-n">1</span><b>出發前總清單</b><small>要辦・要印・要打包</small><em data-prog="todo-now,todo-pass,todo-day0,print,pk-doc,pk-cloth,pk-elec,pk-special,pk-bath,pk-med"></em></a>
+    <a class="stage" href="#s2"><span class="stage-n">2</span><b>落地簽文件包</b><small>入境當下要拿出來的</small><em data-prog="docs"></em></a>
+    <a class="stage" href="#s3"><span class="stage-n">3</span><b>每天帶什麼</b><small>當天出門的隨身包</small><em data-prog="bag-d1,bag-d2,bag-d3,bag-d4,bag-d5"></em></a>
+  </div>
+  <div class="box" style="margin-top:12px">
+    <b>不用處理的事</b>
+    <ul style="margin:4px 0 0">
+      <li>觀光稅：旅行社已代收。</li>
+      <li>e-VOA：護照 10/5 晚上才拿到，這次改成落地現場辦（見第 2 階段）。</li>
+      <li>導遊小費、SIM 卡、行李牌：當地或機場處理，不用事先準備。</li>
+    </ul>
+  </div>
+
+  <!-- ===== 階段 1 ===== -->
+  <h2 id="s1"><span class="stage-n">1</span>出發前總清單</h2>
+  <p class="progress" data-prog="todo-now,todo-pass,todo-day0,print,pk-doc,pk-cloth,pk-elec,pk-special,pk-bath,pk-med"></p>
+
+  <h3>A. 要辦的事（依時間）</h3>
+  <p class="sub">現在就可以做</p>
+  <ul class="check" data-list="todo-now">
+    <li><label><input type="checkbox"><span><b>美金</b>：兩人各 US$300 已換好，確認是 <b>2001 年（含）以後發行</b>、乾淨無破損</span></label></li>
+    <li><label><input type="checkbox"><span><b>美金先分裝</b>：落地簽 US$70（兩人）、導遊小費 US$100（用 10、20 元小面額），其餘到當地換印尼盾</span></label></li>
+    <li><label><input type="checkbox"><span>信用卡開通海外刷卡；記下發卡銀行海外掛失電話</span></label></li>
+    <li><label><input type="checkbox"><span>保旅平險，確認含<b>海外突發疾病</b>與醫療轉送</span></label></li>
+    <li><label><input type="checkbox"><span>外交部「出國登錄」（領事事務局網站）</span></label></li>
+    <li><label><input type="checkbox"><span><b>Grab</b>：用台灣門號註冊並綁信用卡（換印尼 SIM 後收不到台灣簡訊驗證碼）</span></label></li>
+    <li><label><input type="checkbox"><span>下載 Google 離線地圖（峇里島）、Google 翻譯離線印尼語包</span></label></li>
+    <li><label><input type="checkbox"><span>若有人<b>不參加泛舟或 SPA</b>，出發前告知旅行社才能退部分費用</span></label></li>
+    <li><label><input type="checkbox"><span>這個檔案存到手機，關掉網路試開一次</span></label></li>
+    <li><label><input type="checkbox"><span>（選擇性）旅遊醫學門診，見「健康」頁</span></label></li>
+  </ul>
+  <p class="sub">10/5 晚上拿到護照後</p>
+  <ul class="check" data-list="todo-pass">
+    <li><label><input type="checkbox"><span><b>檢查護照</b>：效期到 2027/4/11 之後、至少 2 頁空白頁、姓名拼音和機票一致</span></label></li>
+    <li><label><input type="checkbox"><span>若是新辦或換發的護照，把新護照號碼告訴旅行社</span></label></li>
+    <li><label><input type="checkbox"><span><b>填 All Indonesia 入境申報</b>（兩人各一份，官網 allindonesia.imigrasi.go.id，免費），最晚 10/6 完成，QR Code 截圖</span></label></li>
+    <li><label><input type="checkbox"><span>護照資料頁拍照，存手機並備份到雲端或傳給家人</span></label></li>
+  </ul>
+  <p class="sub">10/7 出發當天</p>
+  <ul class="check" data-list="todo-day0">
+    <li><label><input type="checkbox"><span><b>07:20</b> 到桃園第二航廈長榮 <b>20 號團體櫃台</b>（小周 <a href="tel:0937012974">0937-012-974</a>）</span></label></li>
+    <li><label><input type="checkbox"><span>向送機人員領取：<b>SIM 卡、灰色行李牌、英文版電子機票</b></span></label></li>
+    <li><label><input type="checkbox"><span>手機、耳機充飽電（機上禁用行動電源）</span></label></li>
+  </ul>
+
+  <h3>B. 要印出來／存手機的</h3>
+  <div class="tbl"><table>
+    <tr><th>項目</th><th>形式</th><th>用途</th></tr>
+    <tr><td>英文版電子機票</td><td>紙本（送機人員提供）＋手機拍照</td><td>落地簽必要文件</td></tr>
+    <tr><td>All Indonesia QR Code</td><td>手機截圖，可另印一張備用</td><td>入境海關掃描</td></tr>
+    <tr><td>護照影本</td><td>紙本，每人一份</td><td>護照遺失補辦</td></tr>
+    <tr><td>大頭照 2 張</td><td>實體照片，每人兩張</td><td>護照遺失補辦</td></tr>
+    <tr><td>護照資料頁照片</td><td>手機＋雲端</td><td>備份</td></tr>
+    <tr><td>旅平險保單、急難救助電話</td><td>手機</td><td>就醫、理賠</td></tr>
+    <tr><td>這份旅行手冊</td><td>手機（離線可開）</td><td>行程、電話、清單</td></tr>
+  </table></div>
+  <ul class="check" data-list="print">
+    <li><label><input type="checkbox"><span>護照影本已印好（兩人）</span></label></li>
+    <li><label><input type="checkbox"><span>大頭照已備好（每人 2 張），和護照分開放</span></label></li>
+    <li><label><input type="checkbox"><span>All Indonesia QR Code 已截圖（兩人）</span></label></li>
+    <li><label><input type="checkbox"><span>旅平險保單已存手機</span></label></li>
+  </ul>
+
+  <h3>C. 要打包的行李</h3>
+  <p class="note">行李限制：托運每人 1 件 23 公斤、手提 1 件 7 公斤。</p>
+  <p class="sub">證件與錢</p>
+  <ul class="check" data-list="pk-doc">
+    <li><label><input type="checkbox"><span>護照（兩本）</span></label></li>
+    <li><label><input type="checkbox"><span>美金現鈔（已分裝落地簽、導遊小費）</span></label></li>
+    <li><label><input type="checkbox"><span>信用卡兩張以上、少量台幣（回程搭車用）</span></label></li>
+  </ul>
+  <p class="sub">衣物</p>
+  <ul class="check" data-list="pk-cloth">
+    <li><label><input type="checkbox"><span>透氣短袖、短褲（10 月約 27–32°C，偶有午後陣雨）</span></label></li>
+    <li><label><input type="checkbox"><span>泳衣<b>兩套</b>（Day 2、Day 3 連續兩天會濕）、快乾毛巾</span></label></li>
+    <li><label><input type="checkbox"><span>泛舟用：可濕的衣服、運動涼鞋或溯溪鞋</span></label></li>
+    <li><label><input type="checkbox"><span>進寺廟用：可遮肩的上衣、過膝長褲或長裙</span></label></li>
+    <li><label><input type="checkbox"><span>薄外套（飛機、冷氣房）</span></label></li>
+    <li><label><input type="checkbox"><span>拖鞋、太陽眼鏡、帽子</span></label></li>
+    <li><label><input type="checkbox"><span>輕便雨衣或折傘</span></label></li>
+    <li><label><input type="checkbox"><span>保溫杯或水壺（旅行社建議）</span></label></li>
+  </ul>
+  <p class="sub">電器</p>
+  <ul class="check" data-list="pk-elec">
+    <li><label><input type="checkbox"><span><b>轉接頭</b>：印尼是雙圓孔（C／F 型），230V。確認充電器標示 100–240V</span></label></li>
+    <li><label><input type="checkbox"><span>充電線、多孔 USB 充電頭</span></label></li>
+  </ul>
+  <p class="sub">需要特別包裝（去程、回程安檢規定相同）</p>
+  <ul class="check" data-list="pk-special">
+    <li><label><input type="checkbox"><span><b>隨身液體裝夾鏈袋</b>：手提行李裡的液體、膠狀、噴霧（防曬乳、乳液、牙膏、防蚊液、隱形眼鏡藥水、眼藥水等）每瓶不超過 100ml，全部放進<b>一個 1 公升以內的透明夾鏈袋</b>，每人限一袋，安檢時拿出來單獨過 X 光。超過 100ml 的放托運行李</span></label></li>
+    <li><label><input type="checkbox"><span><b>藥品</b>：錠劑、膠囊不用夾鏈袋，但盡量保留原包裝或藥袋，常用藥放隨身行李。液體藥水照 100ml 規定；航程中必須使用、超過 100ml 的，安檢時主動告知</span></label></li>
+    <li><label><input type="checkbox"><span><b>行動電源</b>：<b>只能放隨身行李</b>；長榮規定每人最多 2 個，沒有清楚標示容量的禁止攜帶（20,000mAh 以下可直接帶）</span></label></li>
+    <li><label><input type="checkbox"><span><b>行動電源與備用電池防短路</b>：每顆個別保護，三選一：放原廠包裝、<b>電極或接孔貼絕緣膠帶</b>、或各自裝進小塑膠袋</span></label></li>
+    <li><label><input type="checkbox"><span><b>機上</b>：行動電源放前方座位下或隨身，不能放頭頂置物櫃；長榮規定上機後<b>全程禁止使用，也不能幫它充電</b></span></label></li>
+    <li><label><input type="checkbox"><span>含鋰電池的手持電扇等小電器：同樣只能放隨身行李</span></label></li>
+    <li><label><input type="checkbox"><span>多帶幾個夾鏈袋：裝濕泳衣、分裝小鈔</span></label></li>
+  </ul>
+  <p class="sub">盥洗與玩水</p>
+  <ul class="check" data-list="pk-bath">
+    <li><label><input type="checkbox"><span><b>牙刷、牙膏</b>與個人盥洗用品（多數五星飯店和 Villa 不提供）</span></label></li>
+    <li><label><input type="checkbox"><span>蓮蓬頭</span></label></li>
+    <li><label><input type="checkbox"><span>一次性浴帽</span></label></li>
+    <li><label><input type="checkbox"><span>一次性鞋套（Day 2、Day 3 玩水用）</span></label></li>
+    <li><label><input type="checkbox"><span>手機防水袋（可掛脖子）</span></label></li>
+    <li><label><input type="checkbox"><span>防水包（裝錢包、換洗衣物等）</span></label></li>
+  </ul>
+  <p class="sub">藥品與保養</p>
+  <ul class="check" data-list="pk-med">
+    <li><label><input type="checkbox"><span>個人長期用藥（帶足天數，附英文藥名）</span></label></li>
+    <li><label><input type="checkbox"><span>腸胃藥、止瀉藥、口服電解質粉</span></label></li>
+    <li><label><input type="checkbox"><span>暈車暈船藥、止痛退燒藥</span></label></li>
+    <li><label><input type="checkbox"><span>防蚊液（含 DEET 或 Picaridin）</span></label></li>
+    <li><label><input type="checkbox"><span>防曬乳（防水型）、蘆薈或曬後修護</span></label></li>
+    <li><label><input type="checkbox"><span>OK 繃、優碘或消毒棉片</span></label></li>
+    <li><label><input type="checkbox"><span>乾洗手、濕紙巾、面紙（廁所常沒有衛生紙）</span></label></li>
+  </ul>
+
+  <!-- ===== 階段 2 ===== -->
+  <h2 id="s2"><span class="stage-n">2</span>落地簽文件包</h2>
+  <p class="note">10/7 抵達峇里島、走<b>落地簽人工窗口</b>時要拿出來的東西。兩人各一份，放在隨身包最好拿的位置。現場辦<b>不需要大頭照</b>。</p>
+  <p class="progress" data-prog="docs"></p>
+  <ul class="check" data-list="docs">
+    <li><label><input type="checkbox"><span><b>護照正本</b></span></label></li>
+    <li><label><input type="checkbox"><span><b>英文版電子機票</b>：桃園送機人員提供，和護照夾在一起</span></label></li>
+    <li><label><input type="checkbox"><span><b>簽證費 US$35／人</b>：已分裝好的美金，最好剛好不用找零（也可付 Rp 500,000 或刷卡）</span></label></li>
+    <li><label><input type="checkbox"><span><b>All Indonesia QR Code</b>：手機截圖，過海關時掃</span></label></li>
+    <li><label><input type="checkbox"><span><b>住宿資料</b>：Royal Tulip Springhill Resort Jimbaran，+62 361 620 5888（官員偶爾會問）</span></label></li>
+  </ul>
+  <p class="note">順序：落地簽窗口付款 → 證照查驗（確認入境章）→ 領行李 → 海關掃 QR → 出關找導遊 Erry。詳細見「入出境」頁。移民官有權抽查旅費，30 天落地簽很少被問到。</p>
+
+  <!-- ===== 階段 3 ===== -->
+  <h2 id="s3"><span class="stage-n">3</span>每天帶什麼</h2>
+  <p class="note">大行李之外，當天出門要放進隨身包的東西。前一晚對照著準備。</p>
+  <p class="progress" data-prog="bag-d1,bag-d2,bag-d3,bag-d4,bag-d5"></p>
+
+  <p class="sub">Day 1・10/7 飛機日</p>
+  <ul class="check" data-list="bag-d1">
+    <li><label><input type="checkbox"><span>落地簽文件包（第 2 階段）</span></label></li>
+    <li><label><input type="checkbox"><span>液體夾鏈袋、行動電源（貼膠帶或裝袋）、薄外套</span></label></li>
+    <li><label><input type="checkbox"><span>換好的少量印尼盾：入住行李小費 Rp 10,000</span></label></li>
+    <li><label><input type="checkbox"><span>轉接頭放隨身，到飯店就能充電</span></label></li>
+  </ul>
+  <p class="sub">Day 2・10/8 泛舟＋烏布</p>
+  <ul class="check" data-list="bag-d2">
+    <li><label><input type="checkbox"><span><b>衣服裡先穿泳衣</b>，穿可濕的涼鞋或溯溪鞋</span></label></li>
+    <li><label><input type="checkbox"><span>換洗衣物、毛巾、裝濕衣的塑膠袋、一次性鞋套</span></label></li>
+    <li><label><input type="checkbox"><span>手機防水袋、防水包</span></label></li>
+    <li><label><input type="checkbox"><span>防曬、防蚊液、帽子</span></label></li>
+    <li><label><input type="checkbox"><span>小鈔：床頭 Rp 10,000、泛舟船家 Rp 10,000–20,000／人、市集購物現金</span></label></li>
+  </ul>
+  <p class="sub">Day 3・10/9 藍夢島＋SPA＋換住 Villa</p>
+  <ul class="check" data-list="bag-d3">
+    <li><label><input type="checkbox"><span><b>行李前一晚打包好</b>（今天退房換住宿）</span></label></li>
+    <li><label><input type="checkbox"><span>出發前吃<b>暈船藥</b></span></label></li>
+    <li><label><input type="checkbox"><span>第二套泳衣、毛巾、換洗衣物、一次性鞋套</span></label></li>
+    <li><label><input type="checkbox"><span>防水防曬、手機防水袋、防水包</span></label></li>
+    <li><label><input type="checkbox"><span>小鈔：床頭、行李退房／入住各 Rp 10,000、<b>藍夢島清潔費 Rp 25,000／人</b>、SPA 小費 Rp 10,000–20,000／人</span></label></li>
+  </ul>
+  <p class="sub">Day 4・10/10 自由活動＋Beach Walk</p>
+  <ul class="check" data-list="bag-d4">
+    <li><label><input type="checkbox"><span>午餐、晚餐自理的錢（現金或信用卡，刷卡選印尼盾）</span></label></li>
+    <li><label><input type="checkbox"><span>購物袋、防曬、帽子</span></label></li>
+    <li><label><input type="checkbox"><span>小鈔：床頭 Rp 10,000</span></label></li>
+    <li><label><input type="checkbox"><span>晚上整理行李，伴手禮確認沒有肉類成分</span></label></li>
+  </ul>
+  <p class="sub">Day 5・10/11 返台</p>
+  <ul class="check" data-list="bag-d5">
+    <li><label><input type="checkbox"><span>護照、行動電源、液體夾鏈袋放隨身行李</span></label></li>
+    <li><label><input type="checkbox"><span><b>導遊小費 US$100</b>（兩人 5 天）</span></label></li>
+    <li><label><input type="checkbox"><span>小鈔：床頭 Rp 10,000、退房行李 Rp 10,000（有人幫搬才給）</span></label></li>
+    <li><label><input type="checkbox"><span>剩下的印尼盾在土產店或機場花完</span></label></li>
+  </ul>
+</section>
+
+<!-- ============ 入出境 ============ -->
+<section class="panel" id="p-border" data-title="🛂 入出境">
+  <h2>入出境流程</h2>
+  <p class="note">這團沒有台灣領隊，以下步驟都要兩個人自己完成。照順序做就不會漏。</p>
+
+  <h3>出發前要先上網辦的</h3>
+  <div class="tbl"><table>
+    <tr><th>項目</th><th>做法</th></tr>
+    <tr><td><b>All Indonesia 入境申報</b><br><span class="note">必填・免費</span></td><td><b>只能在抵達前 72 小時內填</b>（10/4 15:15 起），提早送出系統不接受；又因為要填護照號碼，<b>等 10/5 晚上拿到護照後再填</b>，最晚 10/6 完成。只用官方網站 allindonesia.imigrasi.go.id 或官方 App，存好 QR Code（截圖兩人各一份）。國籍選單若找不到 Taiwan，說明會資料建議選 Other 再輸入 Taiwan。<br>All Indonesia 已整合移民、海關、健康檢疫申報，<b>不必再另外填 e-CD 或 SSHP</b>（說明會資料裡的 ecd.beacukai.go.id 是舊系統）。填寫問題可查官方說明頁 allindonesia.imigrasi.go.id/help。</td></tr>
+    <tr><td><b>電子落地簽 e-VOA</b><br><span class="note">這次來不及・改現場辦</span></td><td>官方建議至少出發前 48 小時送件，但護照最快 10/5 20:00 才拿到，離 10/7 起飛只剩約 38 小時。<b>這次預設落地現場辦</b>。如果還是想試：10/5 當晚送件，到 10/6 晚上仍未核准就放棄、改現場辦。要注意，已線上付款的費用能否退還沒有保證。</td></tr>
+    <tr><td><b>觀光稅 Love Bali</b><br><span class="note">旅行社已代收</span></td><td>不必自己繳。若機場或海關現場仍要求繳 Rp 150,000／人，就照付並<b>保留收據</b>，交給導遊退款。</td></tr>
+  </table></div>
+  <div class="box warn">
+    網路上有很多仿冒網站會向你收「代辦費」。All Indonesia 是免費的，網址只認 <b>.go.id</b> 結尾的官方網站。
+  </div>
+
+  <h3>10/7 桃園出發</h3>
+  <ul>
+    <li><b>07:20</b> 到<b>第二航廈長榮航空 20 號團體櫃台</b>集合。</li>
+    <li>機場服務專線：小周 <a href="tel:0937012974">0937-012-974</a>。行李牌是<b>灰色</b>。</li>
+    <li>團體座位依姓氏排序，兩人可能不相鄰，報到時可詢問，或上機後自行和旁邊旅客協調。</li>
+    <li>行動電源、含鋰電池的手持電扇<b>只能放隨身行李</b>，電極貼絕緣膠帶或個別裝袋；上機後放前方座位下，全程禁用（詳見「行前」→「需要特別包裝的東西」）。</li>
+    <li>隨身液體每瓶不超過 100ml，全部裝進 1 公升以內的透明夾鏈袋。</li>
+    <li>台灣出境現金上限：台幣 10 萬、外幣等值 US$1 萬。</li>
+  </ul>
+
+  <h3>10/7 15:15 抵達峇里島（照順序）</h3>
+  <ol>
+    <li><b>落地簽</b>：<br>・<b>有 e-VOA</b>：直接走 <b>Autogate 自動通關閘門</b>（需晶片護照，封面有晶片標誌），掃描護照資料頁、看鏡頭即可。<b>不會蓋入境章</b>，入境紀錄存在系統裡，通過後會收到電子郵件的停留許可（Stay Permit），<b>出關前先確認收到</b>。<br>・<b>有 e-VOA 但想要入境章</b>：可以不走閘門，改排人工櫃台，向官員說「Entry stamp, please」。多數情況會蓋，但不保證，排隊也比較久。<br>・<b>現場辦（這次預設）</b>：到落地簽<b>人工窗口</b>付 <b>US$35／人</b>（或 Rp 500,000、刷卡），出示<b>護照正本、英文版電子機票</b>（送機人員提供），<b>不需大頭照</b>。拿到簽證貼紙和收據後，再排人工證照查驗。</li>
+    <li><b>人工證照查驗</b>（現場辦落地簽、或被引導到人工櫃台時）：拿回護照時<b>當場翻開確認有入境章或入境貼紙</b>，沒有就請官員補上。</li>
+    <li><b>領行李</b>：找灰色行李牌。</li>
+    <li><b>海關</b>：出示 All Indonesia 的 QR Code 讓海關掃描。</li>
+    <li><b>出關</b>：找舉牌的導遊 Erry（<a href="tel:+6282237022518">+62 822-3702-2518</a>）。若剛才在機場被收了觀光稅，把收據交給導遊退款。</li>
+    <li>機場內只換少量印尼盾應急，或乾脆不換，交給導遊帶去市區換錢所。</li>
+  </ol>
+
+  <h3>10/11 峇里島出境（16:30 起飛）</h3>
+  <ul>
+    <li>導遊送到機場後，自己到長榮櫃台報到、托運。</li>
+    <li>出境證照查驗：走人工櫃台入境的會看入境章；走自動閘門入境的，備好 e-VOA 和停留許可郵件。</li>
+    <li>離開前把印尼盾花完，或留一點當紀念。</li>
+    <li>免稅菸酒（20 歲以上）每人限菸一條、酒一瓶。</li>
+  </ul>
+
+  <h3>10/11 22:00 回到台灣</h3>
+  <div class="box alert">
+    <b>不能帶回台灣</b>：任何肉品（含真空包裝、肉乾、含肉泡麵）、新鮮水果、活植物、<b>電子煙與加熱菸</b>（最高罰 500 萬元）。被查到沒申報，動植物產品罰 3,000–15,000 元起。
+  </div>
+  <ul>
+    <li><b>可以帶</b>：烘焙過的咖啡豆、乾燥香料粉（胡椒粉、咖哩粉）、不含肉的餅乾、果乾、蝦餅等加工乾燥水產品、不含肉的泡麵。土產店多半是這類，買前看一下成分。</li>
+    <li>自用藥品有數量上限（例如每種最多 12 瓶，合計 36 瓶），一般買一兩盒不會超過。</li>
+    <li>回台 14 天內若發燒，就醫時要說去過峇里島。</li>
+  </ul>
+</section>
+
+<!-- ============ 錢 ============ -->
+<section class="panel" id="p-money" data-title="💵 錢">
+  <h2>換算</h2>
+  <p class="nojs-only note">預覽模式下換算器無法使用。速算參考（約 1 USD ≈ Rp 17,700、1 TWD ≈ Rp 550）：Rp 10,000 ≈ NT$18、Rp 50,000 ≈ NT$91、Rp 100,000 ≈ NT$182、Rp 500,000 ≈ NT$909。</p>
+  <div class="box conv js-only">
+    <label for="idr">印尼盾 IDR</label>
+    <input id="idr" inputmode="numeric" autocomplete="off">
+    <label for="usd">美金 USD</label>
+    <input id="usd" inputmode="decimal" autocomplete="off">
+    <label for="twd">台幣 TWD</label>
+    <input id="twd" inputmode="decimal" autocomplete="off">
+    <div class="quick" aria-label="常用金額">
+      <button type="button" data-idr="10000">Rp 10k</button>
+      <button type="button" data-idr="50000">Rp 50k</button>
+      <button type="button" data-idr="100000">Rp 100k</button>
+      <button type="button" data-idr="500000">Rp 500k</button>
+      <button type="button" data-idr="1000000">Rp 1M</button>
+    </div>
+    <div class="rates">
+      <div><label for="rUsd">1 USD = ? IDR</label><input id="rUsd" inputmode="decimal"></div>
+      <div><label for="rTwd">1 TWD = ? IDR</label><input id="rTwd" inputmode="decimal"></div>
+    </div>
+    <p class="note" style="margin:8px 0 0">預設匯率是 2026 年 9 月中的約略值，到換錢所看到牌價後請改成實際數字，會自動記住。</p>
+  </div>
+
+  <h2>換錢</h2>
+  <ul>
+    <li>美金要用 <b>2001 年（含）以後發行</b>的版本，乾淨、無摺痕。</li>
+    <li><b>帶美金去換最划算</b>，台幣在峇里島接受度低、匯率差。</li>
+    <li>到<b>合法授權的換錢所</b>：例如 Central Kuta Money Exchange、BMC。現場有公開牌價、會給收據。</li>
+    <li><b>避開</b>機場（只換少量）、飯店櫃檯、路邊小店。匯率高得離譜一定有問題。</li>
+    <li>大面額（US$100）通常匯率較好；鈔票要乾淨無破損，否則可能被拒收或打折。</li>
+    <li>換錢當下自己數清楚、確認無誤才離開櫃台，不要讓對方「幫你再數一次」。</li>
+    <li>ATM 可應急，但每次手續費約 Rp 30,000–50,000，再加銀行海外手續費。選銀行內或大型商場的 ATM。</li>
+  </ul>
+  <div class="box warn">
+    <b>印尼盾 0 很多</b>：Rp 100,000 是紅色大鈔、Rp 50,000 是藍色，顏色相近的面額付錢前看清楚位數。菜單上常寫 50K＝Rp 50,000。標價加「++」代表另加稅與服務費。
+  </div>
+
+  <h2>刷卡</h2>
+  <div class="box warn">
+    <b>一律選印尼盾（IDR）付款，不要選台幣（TWD）。</b>刷卡機或店員問「要用台幣付嗎？」時說 <b>No, Rupiah please</b>。選台幣會套用店家銀行的匯率（動態貨幣轉換 DCC），通常多付 3%～7%，而且台灣發卡銀行的國外交易手續費（約 1.5%）照樣會收。簽名前先看簽單幣別，如果印的是 TWD，請店員取消重刷。
+  </div>
+  <h2>確定的支出（兩人）</h2>
+  <div class="tbl"><table>
+    <tr><th>項目</th><th>金額</th><th>何時付</th></tr>
+    <tr><td>落地簽</td><td class="num">Rp 500,000 × 2</td><td>抵達時</td></tr>
+    <tr><td>導遊小費</td><td class="num">US$10 × 2 人 × 5 天 = US$100</td><td>最後一天</td></tr>
+    <tr><td>觀光稅</td><td class="num">Rp 150,000 × 2</td><td>旅行社已代收；若機場被收，保留收據由導遊退</td></tr>
+    <tr><td>藍夢島環境清潔費</td><td class="num">Rp 25,000 × 2</td><td>10/9 上島時，付現</td></tr>
+    <tr><td>Day 4 午餐、晚餐</td><td class="num">自理</td><td>10/10</td></tr>
+    <tr><td>飯店押金</td><td class="num">依飯店</td><td>入住時（退房退還）</td></tr>
+  </table></div>
+  <p class="note">落地簽 Rp 500,000，約 US$35–38／人。兩人換的 US$600 扣掉導遊小費 US$100、落地簽 US$70，剩約 US$430 可換成印尼盾當零用與自費。</p>
+
+  <h2>自費活動價目（當地加購）</h2>
+  <p class="note">行程外的選購項目，以美金計價、每人價格。都不是必要的，不想參加可以直接說不用。</p>
+  <div class="tbl"><table>
+    <tr><th>南灣水上活動</th><th>US$</th></tr>
+    <tr><td>香蕉船（一次）</td><td class="num">25</td></tr>
+    <tr><td>水上摩托車（一次）</td><td class="num">30</td></tr>
+    <tr><td>浮潛 60 分鐘</td><td class="num">30</td></tr>
+    <tr><td>雙人拖曳傘（每人每趟）</td><td class="num">50</td></tr>
+    <tr><td>深潛（一次，氣瓶一支）</td><td class="num">80</td></tr>
+    <tr><td>海底漫步 約 15 分鐘</td><td class="num">90</td></tr>
+    <tr><th>SPA（2 小時）</th><th>US$</th></tr>
+    <tr><td>泰式指壓按摩</td><td class="num">55</td></tr>
+    <tr><td>精油芳香療法＋頭部紓壓</td><td class="num">60</td></tr>
+    <tr><td>傳統 Lulur SPA</td><td class="num">75</td></tr>
+    <tr><td>四手精油按摩</td><td class="num">80</td></tr>
+    <tr><td>紅酒或巧克力 Lulur SPA</td><td class="num">90</td></tr>
+  </table></div>
+  <p class="note">行程已含 Day 3 的 Lulur Spa 120 分鐘，以及藍夢島上的海底漫步，不必重複加購。</p>
+
+  <h2>小費參考</h2>
+  <div class="tbl"><table>
+    <tr><th>情境</th><th>金額</th></tr>
+    <tr><td>飯店行李・入住（行李員送到房間時給；10/7、10/9）</td><td class="num">Rp 10,000／房</td></tr>
+    <tr><td>飯店行李・退房（<u>有</u>人到房間幫搬才給，自己拖就不用；10/9、10/11）</td><td class="num">Rp 10,000／房</td></tr>
+    <tr><td>床頭（每天早上）</td><td class="num">Rp 10,000／房</td></tr>
+    <tr><td>烏布泛舟船家</td><td class="num">Rp 10,000–20,000／人</td></tr>
+    <tr><td>SPA 芳療師</td><td class="num">Rp 10,000–20,000／人</td></tr>
+    <tr><td>騎單車帶領員</td><td class="num">Rp 10,000／人</td></tr>
+    <tr><td>南灣水上活動教練</td><td class="num">Rp 10,000／人</td></tr>
+  </table></div>
+  <p class="note">行李小費的旅行社原文是「進出飯店行李小費每房 Rp 10,000」，沒有寫明退房是否一定要給，上表是依實際有沒有服務來區分。騎單車和南灣水上活動是旅行社的通用清單，這次行程沒有安排，除非你加購南灣自費活動。每天出門前準備一疊 Rp 10,000 和 Rp 20,000 小鈔，放在容易拿的口袋。</p>
+</section>
+
+<!-- ============ 健康 ============ -->
+<section class="panel" id="p-health" data-title="🩺 健康">
+  <h2>緊急電話</h2>
+  <div class="box alert">
+    <div class="tbl"><table>
+      <tr><td><b>導遊 Erry（女）</b></td><td class="num"><a href="tel:+6282237022518">+62 822-3702-2518</a></td></tr>
+      <tr><td>印尼緊急求助</td><td class="num"><a href="tel:112">112</a></td></tr>
+      <tr><td>救護車</td><td class="num"><a href="tel:118">118</a>／<a href="tel:119">119</a></td></tr>
+      <tr><td>警察</td><td class="num"><a href="tel:110">110</a></td></tr>
+      <tr><td>駐泗水辦事處急難電話（峇里島歸這裡管）</td><td class="num"><a href="tel:+6282257669680">+62 822-5766-9680</a></td></tr>
+      <tr><td>駐印尼代表處急難電話</td><td class="num"><a href="tel:+62811984676">+62 811-984-676</a></td></tr>
+      <tr><td>Royal Tulip Springhill（10/7–10/9）</td><td class="num"><a href="tel:+623616205888">+62 361 620 5888</a></td></tr>
+      <tr><td>The Light Villas（10/9–10/11）</td><td class="num"><a href="tel:+623618499580">+62 361 8499 580</a></td></tr>
+      <tr><td>外交部緊急聯絡中心（從國外撥）</td><td class="num"><a href="tel:+886800085095">+886-800-085-095</a></td></tr>
+    </table></div>
+    <p class="note" style="margin:8px 0 0">急難電話只供車禍、重病、遺失護照等重大事件使用。</p>
+  </div>
+
+  <h2>看病流程</h2>
+  <ol>
+    <li>先打給<b>導遊</b>，他最清楚附近醫院並能幫忙翻譯。</li>
+    <li>打給<b>旅平險的海外急難救助專線</b>，部分保險可直接安排醫院、擔保付款。</li>
+    <li>觀光客常去的國際醫院：<b>BIMC Hospital</b>（Kuta、Nusa Dua）、<b>Siloam Hospitals Bali</b>（Kuta）、<b>BROS（Bali Royal Hospital）</b>（Denpasar）。</li>
+    <li>通常要先付費。務必索取：<b>英文診斷證明、收據正本、費用明細</b>。</li>
+    <li>回台後可申請保險理賠，以及健保「自墊醫療費用核退」（就醫後 6 個月內申請）。</li>
+  </ol>
+
+  <h2>常見健康風險</h2>
+  <details><summary>腸胃炎（俗稱 Bali Belly）</summary>
+    <ul>
+      <li>只喝瓶裝水，刷牙也建議用瓶裝水。</li>
+      <li>路邊攤的冰塊、生菜、切好的水果要小心。</li>
+      <li>拉肚子時先補充電解質；發燒、血便或一天拉超過 6 次就去看醫生。</li>
+    </ul>
+  </details>
+  <details><summary>登革熱（蚊子傳染）</summary>
+    <ul>
+      <li>白天也要擦防蚊液，傍晚和雨後特別多蚊子。</li>
+      <li>回台 14 天內若發燒、頭痛、骨頭痛，就醫時主動說<b>去過峇里島</b>。疾管署諮詢專線 1922。</li>
+    </ul>
+  </details>
+  <details><summary>狂犬病（猴子、狗）</summary>
+    <ul>
+      <li>峇里島有狂犬病。不要餵食、觸摸猴子和流浪狗，猴子森林裡收好眼鏡、帽子、食物和塑膠袋。</li>
+      <li>被咬或抓傷：<b>立刻用肥皂和清水沖洗 15 分鐘</b>，當天就去醫院打疫苗，不要拖。</li>
+    </ul>
+  </details>
+  <details><summary>假酒（甲醇）</summary>
+    <p>不要喝來路不明的便宜調酒或當地私釀酒 Arak。若喝酒後視力模糊、劇烈頭痛、嘔吐，立刻就醫。啤酒（如 Bintang）和正規酒吧較安全。</p>
+  </details>
+  <details><summary>中暑與曬傷</summary>
+    <p>赤道附近紫外線很強。每 2 小時補擦防曬，多喝水，中午避免長時間曝曬。</p>
+  </details>
+  <details><summary>水上活動與泛舟</summary>
+    <p>全程穿救生衣、戴安全帽，聽教練指示。有心臟病、高血壓、懷孕或剛喝酒不要參加。浮潛時注意海流，不要離開教練視線。</p>
+  </details>
+
+  <h2>出發前門診（建議）</h2>
+  <p>可到各大醫院的<b>旅遊醫學門診</b>評估，通常會討論 A 型肝炎、傷寒疫苗，並確認常規疫苗是否完整。出發只剩幾天，疫苗可能來不及完整生效，門診仍可幫忙開立備用藥。</p>
+</section>
+
+<!-- ============ 民情 ============ -->
+<section class="panel" id="p-culture" data-title="🌺 民情">
+  <h2>風俗民情</h2>
+  <p>峇里島大多數人信奉<b>峇里印度教</b>，宗教就是日常生活的一部分。</p>
+
+  <h3>寺廟</h3>
+  <ul>
+    <li>入寺下半身要過膝，並繫黃、綠或紅色腰帶（入口處有提供）。穿短褲短裙的話，在入口租紗龍（sarong），約 Rp 5,000。</li>
+    <li>祭典時不要站在跪拜祈禱的人前面，也不要用閃光燈拍祭司。</li>
+    <li>不要爬上神壇、雕像或聖樹拍照；祭司經過或有儀式時讓路，不要擋在前面。</li>
+    <li>傳統上生理期女性、身上有流血傷口者不進入寺廟內。</li>
+  </ul>
+  <h3>日常禮儀</h3>
+  <ul>
+    <li>路邊、店門口、車上常有花草供品 <b>Canang Sari</b>，走路小心<b>不要踩到</b>。</li>
+    <li>不要摸別人的頭（包括小孩）；遞東西、收錢、吃飯用<b>右手</b>。</li>
+    <li>拍當地人或儀式前先詢問，也能避免事後被索取費用。</li>
+    <li>在當地人面前不要兩手叉腰，會被認為不禮貌。</li>
+    <li>行程中的木雕村、銀器、蠟染、土產店，買東西前記得殺價。</li>
+    <li>遇到遊行隊伍或宗教儀式造成塞車很常見，耐心等候。</li>
+    <li>說話平和，當眾大聲發脾氣會被視為非常失禮。</li>
+    <li>市場可以殺價，保持笑容；百貨公司、超市不殺價。</li>
+  </ul>
+  <div class="box alert">
+    <b>法律紅線</b>：印尼對毒品處罰極重（最高死刑），任何人託你帶東西都不要答應。也不要損毀或褻瀆宗教場所。
+  </div>
+
+  <h2>餐飲</h2>
+  <div class="tbl"><table>
+    <tr><th>菜名</th><th>是什麼</th></tr>
+    <tr><td>Nasi Goreng</td><td>印尼炒飯，通常配荷包蛋、蝦餅</td></tr>
+    <tr><td>Mie Goreng</td><td>印尼炒麵</td></tr>
+    <tr><td>Nasi Campur</td><td>白飯配多樣小菜的綜合飯</td></tr>
+    <tr><td>Babi Guling</td><td>峇里烤乳豬，峇里島代表菜</td></tr>
+    <tr><td>Bebek Betutu／髒鴨餐</td><td>香料醃製後慢烤或炸的鴨</td></tr>
+    <tr><td>Sate Lilit</td><td>魚漿或肉末裹在香茅上烤的沙嗲</td></tr>
+    <tr><td>Sambal</td><td>辣椒醬，通常很辣，先嚐一點</td></tr>
+  </table></div>
+  <ul>
+    <li>怕辣就說 <b>tidak pedas</b>（不要辣）。</li>
+    <li>選人多、現點現做的店；瓶裝水確認瓶蓋未開封。</li>
+    <li>菜單價格後面有「++」，結帳時要另加稅和服務費。</li>
+  </ul>
+
+  <h2>簡單印尼語</h2>
+  <div class="tbl"><table>
+    <tr><th>中文</th><th>印尼語</th><th>念法</th></tr>
+    <tr><td>你好／早安</td><td>Selamat pagi</td><td>瑟拉瑪 巴gi</td></tr>
+    <tr><td>謝謝</td><td>Terima kasih</td><td>德里媽 卡西</td></tr>
+    <tr><td>不用了，謝謝</td><td>Tidak, terima kasih</td><td>迪達</td></tr>
+    <tr><td>多少錢？</td><td>Berapa?</td><td>比拉巴</td></tr>
+    <tr><td>太貴了</td><td>Terlalu mahal</td><td>德拉路 媽哈</td></tr>
+    <tr><td>不要辣</td><td>Tidak pedas</td><td>迪達 不達斯</td></tr>
+    <tr><td>礦泉水</td><td>Air mineral</td><td>阿依 米內拉</td></tr>
+    <tr><td>廁所在哪？</td><td>Di mana toilet?</td><td>低媽那 都依列</td></tr>
+    <tr><td>救命／請幫忙</td><td>Tolong!</td><td>多龍</td></tr>
+    <tr><td>不好意思／借過</td><td>Permisi</td><td>不米西</td></tr>
+  </table></div>
+</section>
+
+<!-- ============ 旅行社 ============ -->
+<section class="panel" id="p-agency" data-title="📋 旅行社">
+  <h2>團體資料</h2>
+  <div class="tbl"><table>
+    <tr><td>團名</td><td>樂遊峇里島５日（DPS05BR261007B）</td></tr>
+    <tr><td>集合</td><td>10/7 07:20 桃園第二航廈長榮 20 號團體櫃台</td></tr>
+    <tr><td>機場服務</td><td>小周 <a href="tel:0937012974">0937-012-974</a></td></tr>
+    <tr><td>行李牌</td><td>灰色</td></tr>
+    <tr><td>去程</td><td>BR255　10/7 09:50 → 15:15</td></tr>
+    <tr><td>回程</td><td>BR256　10/11 16:30 → 22:00</td></tr>
+    <tr><td>團費</td><td>每人 37,900 − 500 折扣＝37,400 元；全團 7 人，一人補單人房差 8,000 元</td></tr>
+    <tr><td>當地導遊</td><td>Erry（女）<a href="tel:+6282237022518">+62 822-3702-2518</a></td></tr>
+  </table></div>
+  <h2>旅行社告知事項</h2>
+  <div class="box">
+    <ul>
+      <li>在台灣機場先找行程表上的<b>送機同事</b>，領 SIM 卡和行李牌。</li>
+      <li>當地導遊 <b>Erry（女）</b>，<a href="tel:+6282237022518">+62 822-3702-2518</a>，在峇里島機場接機。</li>
+      <li><b>觀光稅</b>：旅行社已代收。若機場現場仍被要求繳，就先付並保留收據，當地導遊會退款。</li>
+      <li>當地導遊小費：<b>每人每天 US$10</b>（迷你小團、無台灣領隊）。</li>
+      <li><b>沒有台灣領隊</b>：機場內的落地簽、過海關、入出境都要自己處理；兩地機場有專人協助報到。</li>
+      <li>人工櫃台入境時<b>當場檢查護照有沒有蓋入境章</b>。曾有旅客因為沒有入境章，出境時被罰 US$50–100，而且無法申訴。用 e-VOA 走自動閘門則不蓋章，改以系統紀錄和停留許可郵件為準。</li>
+      <li><b>落地簽</b>：US$35 或 Rp 500,000／人。單次入境，最長停留 30 天。機場辦理或線上電子落地簽皆可。</li>
+    </ul>
+  </div>
+  <h2>Villa 住宿提醒（Day 3–4）</h2>
+  <ul>
+    <li>多為一大床，房型無法指定；早餐多是簡易美式。</li>
+    <li>熱水靠鍋爐，大家同時洗澡容易沒熱水，等 30–60 分鐘就會恢復。</li>
+    <li>庭院花草多、蚊蟲多，防蚊液要擦。</li>
+    <li>泳池不要單獨一個人下水，注意水深。</li>
+    <li>可能與同團其他旅客共用一棟（4–6 人共用客廳和泳池）。</li>
+  </ul>
+  <h2>其他實用資訊</h2>
+  <ul>
+    <li><b>團體資訊</b>：團號 DPS05BR261007B，6 人成團，當地 2–6 人一車，配華語導遊與司機。行程中有咖啡、土產店購物點，車上也可能販售商品，都沒有強制購買。</li>
+    <li><b>時差</b>：與台灣相同。</li>
+    <li><b>電壓插座</b>：230V，雙圓孔，需要轉接頭。</li>
+    <li><b>交通</b>：叫車用 Grab 或 Gojek，比路邊計程車透明。</li>
+    <li><b>網路</b>：用旅行社給的 SIM 卡；出發前先確認是否需要設定 APN。</li>
+    <li><b>天氣</b>：10 月是乾季尾聲，炎熱、偶有陣雨。</li>
+  </ul>
+  <footer>
+    資料整理於 2026/10/3。入境規定、匯率、電話可能變動，出發前請以旅行社、官方網站為準。<br>
+    勾選狀態只存在這支手機的這個瀏覽器中。
+  </footer>
+</section>
+</div>
+
+<nav class="tabs" aria-label="分頁">
+  <div class="inner" role="tablist">
+    <a role="tab" href="#p-plan" data-p="p-plan" aria-selected="true"><b>🗓</b>行程</a>
+    <a role="tab" href="#p-prep" data-p="p-prep" aria-selected="false"><b>🧳</b>行前</a>
+    <a role="tab" href="#p-border" data-p="p-border" aria-selected="false"><b>🛂</b>入出境</a>
+    <a role="tab" href="#p-money" data-p="p-money" aria-selected="false"><b>💵</b>錢</a>
+    <a role="tab" href="#p-health" data-p="p-health" aria-selected="false"><b>🩺</b>健康</a>
+    <a role="tab" href="#p-culture" data-p="p-culture" aria-selected="false"><b>🌺</b>民情</a>
+    <a role="tab" href="#p-agency" data-p="p-agency" aria-selected="false"><b>📋</b>旅行社</a>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var store = {
+    get:function(k){try{return localStorage.getItem('bali26:'+k)}catch(e){return null}},
+    set:function(k,v){try{localStorage.setItem('bali26:'+k,v);return true}catch(e){return false}}
+  };
+
+  /* theme */
+  var themeBtn=document.getElementById('themeBtn'), modes=['auto','light','dark'], names={auto:'自動',light:'淺色',dark:'深色'};
+  function applyTheme(m){
+    if(m==='light'||m==='dark') document.documentElement.setAttribute('data-theme',m);
+    else { document.documentElement.removeAttribute('data-theme'); m='auto'; }
+    themeBtn.textContent=names[m]; return m;
+  }
+  var mode=applyTheme(store.get('theme')||'auto');
+  themeBtn.onclick=function(){ mode=applyTheme(modes[(modes.indexOf(mode)+1)%3]); store.set('theme',mode); };
+
+  /* tabs */
+  var btns=document.querySelectorAll('nav.tabs a');
+  function show(id){
+    btns.forEach(function(b){b.setAttribute('aria-selected', b.dataset.p===id?'true':'false')});
+    document.querySelectorAll('section.panel').forEach(function(s){s.classList.toggle('on', s.id===id)});
+    window.scrollTo(0,0); store.set('tab',id);
+  }
+  btns.forEach(function(b){b.onclick=function(e){e.preventDefault();show(b.dataset.p)}});
+  var lastTab=store.get('tab'); if(lastTab && document.getElementById(lastTab)) show(lastTab);
+
+  /* today banner */
+  var now=new Date();
+  var ymd=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  var start=new Date(2026,9,7), msDay=86400000;
+  var today0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var diff=Math.round((start-today0)/msDay);
+  var el=document.getElementById('today');
+  var dayEl=document.querySelector('.day[data-date="'+ymd+'"]');
+  if(dayEl){
+    dayEl.classList.add('is-today');
+    el.innerHTML='<strong>今天：'+dayEl.querySelector('h3').firstChild.textContent.trim()+'</strong><span>點下方「行程」查看今天的安排。</span>';
+  } else if(diff>0){
+    el.innerHTML='<strong>距離出發還有 '+diff+' 天</strong><span>'+(diff<=3?'該填 All Indonesia 入境卡了，見「行前」。':'先看「行前」把清單勾一勾。')+'</span>';
+  } else {
+    el.innerHTML='<strong>旅程結束，歡迎回家</strong><span>回台 14 天內若發燒，就醫時記得說去過峇里島。</span>';
+  }
+
+  /* checklists */
+  function updateProgress(){
+    document.querySelectorAll('[data-prog]').forEach(function(el){
+      var all=0,done=0;
+      el.dataset.prog.split(',').forEach(function(n){
+        document.querySelectorAll('[data-list="'+n+'"] input').forEach(function(i){all++; if(i.checked) done++;});
+      });
+      el.textContent='已完成 '+done+' / '+all;
+      var card=el.closest('.stage'); if(card) card.classList.toggle('done', all>0 && done===all);
+    });
+  }
+  document.querySelectorAll('[data-list]').forEach(function(ul){
+    var key='list-'+ul.dataset.list, saved=[];
+    try{saved=JSON.parse(store.get(key)||'[]')}catch(e){}
+    ul.querySelectorAll('input').forEach(function(inp,idx){
+      inp.checked = saved.indexOf(idx)>-1;
+      inp.addEventListener('change',function(){
+        var arr=[]; ul.querySelectorAll('input').forEach(function(x,j){if(x.checked) arr.push(j)});
+        store.set(key,JSON.stringify(arr)); updateProgress();
+      });
+    });
+  });
+  updateProgress();
+
+  /* converter */
+  var rUsd=document.getElementById('rUsd'), rTwd=document.getElementById('rTwd');
+  var fIdr=document.getElementById('idr'), fUsd=document.getElementById('usd'), fTwd=document.getElementById('twd');
+  rUsd.value=store.get('rUsd')||'17700';
+  rTwd.value=store.get('rTwd')||'550';
+  function num(s){return parseFloat(String(s).replace(/[^0-9.]/g,''))||0}
+  function fmt(n,d){return n.toLocaleString('zh-TW',{maximumFractionDigits:d})}
+  function fromIdr(idr,skip){
+    var u=num(rUsd.value), t=num(rTwd.value);
+    if(skip!=='idr') fIdr.value=idr?fmt(Math.round(idr),0):'';
+    if(skip!=='usd') fUsd.value=idr&&u?fmt(idr/u,2):'';
+    if(skip!=='twd') fTwd.value=idr&&t?fmt(idr/t,0):'';
+  }
+  fIdr.addEventListener('input',function(){fromIdr(num(fIdr.value),'idr')});
+  fUsd.addEventListener('input',function(){fromIdr(num(fUsd.value)*num(rUsd.value),'usd')});
+  fTwd.addEventListener('input',function(){fromIdr(num(fTwd.value)*num(rTwd.value),'twd')});
+  [rUsd,rTwd].forEach(function(r){r.addEventListener('input',function(){store.set(r.id,r.value); fromIdr(num(fIdr.value),'idr')})});
+  document.querySelectorAll('.quick button').forEach(function(b){b.onclick=function(){fromIdr(+b.dataset.idr)}});
+  fromIdr(100000);
+})();
+</script>
+</body>
+</html>
